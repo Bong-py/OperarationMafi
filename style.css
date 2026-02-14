@@ -1,0 +1,268 @@
+:root {
+  --bg-start: #ffe6f2;
+  --bg-end: #e7dcff;
+  --text-main: #3f2b56;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --accent: #ff5ca8;
+  --accent-soft: #ff93c3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.section {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  padding: 4.5rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  max-width: 700px;
+}
+
+.tag {
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+h1,
+h2 {
+  font-family: "Great Vibes", cursive;
+  color: #8f2f73;
+  margin: 0.4rem 0 1rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 8vw, 4.6rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+}
+
+.subtext,
+p {
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.gif {
+  width: min(320px, 88vw);
+  border-radius: 20px;
+  margin: 1.4rem auto;
+  display: block;
+  box-shadow: 0 14px 32px rgba(113, 65, 128, 0.22);
+}
+
+.btn {
+  border: none;
+  background: linear-gradient(90deg, var(--accent), #b564ff);
+  color: #fff;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 0.7rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255, 92, 168, 0.35);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.love-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  padding: 1.1rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 16px rgba(100, 65, 110, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.love-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(255, 92, 168, 0.35);
+}
+
+.glow {
+  text-shadow: 0 0 12px rgba(255, 92, 168, 0.55), 0 0 24px rgba(181, 100, 255, 0.35);
+}
+
+.promise-list {
+  list-style: none;
+  max-width: 500px;
+  margin: 1.5rem auto 0;
+  padding: 0;
+  text-align: left;
+}
+
+.promise-list li {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  padding: 0.9rem 1rem 0.9rem 2.2rem;
+  position: relative;
+}
+
+.promise-list li::before {
+  content: "✓";
+  color: #2ca966;
+  font-weight: 700;
+  position: absolute;
+  left: 0.9rem;
+}
+
+.final {
+  padding-bottom: 6rem;
+}
+
+.hidden {
+  display: none;
+  margin-top: 1.2rem;
+  font-weight: 600;
+  color: #7a235e;
+}
+
+.show {
+  display: block;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 105, 180, 0.45);
+  transform: rotate(45deg);
+  animation: floatUp linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.heart::before {
+  left: -8px;
+}
+
+.heart::after {
+  top: -8px;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.music-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  border: none;
+  background: rgba(80, 42, 96, 0.85);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -12px;
+  border-radius: 2px;
+  z-index: 10;
+  animation: fall 2.8s linear forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 3.6rem 0;
+  }
+
+  .music-toggle {
+    font-size: 0.85rem;
+  }
+}
